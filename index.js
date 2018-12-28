@@ -1,4 +1,5 @@
 var Address = require('ipaddr.js');
+var forwarded = require('forwarded-for');
 
 var isNumeric = function(n) { return !isNaN(parseFloat(n)) && isFinite(n); };
 
@@ -71,6 +72,8 @@ function AccessControl(opts) {
 
 		console.log('req.ip' + req.ip);
 		console.log('req.connection.remoteAddress' + req.connection.remoteAddress);
+		var address = forwarded(req, req.headers);
+		console.log('x_forwarded_for' + address);
 
 		var inAllows = ipMatch(clientIp, _options.allows);
 		var inDenys = ipMatch(clientIp, _options.denys);
