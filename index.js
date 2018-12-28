@@ -69,6 +69,8 @@ function AccessControl(opts) {
 			? req.connection.remoteAddress
 			: req.ip || req.connection.remoteAddress;
 
+		console.log('hacked: ' + JSON.stringify(req.ip));
+
 		var inAllows = ipMatch(clientIp, _options.allows);
 		var inDenys = ipMatch(clientIp, _options.denys);
 
