@@ -72,8 +72,8 @@ function AccessControl(opts) {
 
 		console.log('req.ip' + req.ip);
 		console.log('req.connection.remoteAddress' + req.connection.remoteAddress);
-		var address = forwarded(req, req.headers);
-		console.log('x_forwarded_for' + address);
+		//var address = forwarded(req, req.headers);
+		console.log('x_forwarded_for' + JSON.stringify(req.headers));
 
 		var inAllows = ipMatch(clientIp, _options.allows);
 		var inDenys = ipMatch(clientIp, _options.denys);
